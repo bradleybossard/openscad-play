@@ -1,14 +1,14 @@
 
 
-module cy_holder(inner_rad, outer_rad, height) {
+module cy_holder(inner_radius, outer_radius, height) {
   difference() {
     union() {
-      translate([0, inner_rad, 0]) {  
-        cube([outer_rad*2, height, height], center=true);
+      translate([0, inner_radius, 0]) {  
+        cube([outer_radius*2, height, height], center=true);
       }    
-      cylinder(h = height, r=outer_rad, center = true);
+      cylinder(h = height, r=outer_radius, center = true);
     }
-    cylinder(h = height+2, r=inner_rad, center = true);      
+    cylinder(h = height+2, r=inner_radius, center = true);      
   }
 }
 
@@ -33,7 +33,13 @@ translate([0, 13, 0]) {
 }
 
 union() {
-  cy_holder(4, 7, 5);
+  inner_radius = 4;
+  outer_radius = 7;
+  height = 5;
+    
+  cy_holder(inner_radius=inner_radius,
+            outer_radius=outer_radius,
+            height=height);
 /*
   translate([14, 0, 0]) {
     cy_holder(4, 7, 10);
